@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Archived Events </h1>
+    <div class="events">
+        {% for event in events %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.title }}</h5>
+                            <p class="card-text">{{ event.venue }}</p>
+                            <p class="card-text">{{ event.date }}</p>
+                            <a href="{% url 'events:event_details' event.id %}"
+                               class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

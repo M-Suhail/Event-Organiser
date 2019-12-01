@@ -1,0 +1,74 @@
+body {
+    background-image: url("/static/event.jpg");
+    background-repeat-y: no-repeat;
+    color: black;
+}
+
+body * {
+    font-family: "Comic Sans MS";
+}
+
+h1, h2, h3, h4, h5 {
+
+    font-family: 'Lobster', cursive;
+    font-weight: normal;
+    margin: 0;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+div.wrapper {
+    margin: 50px auto;
+}
+
+div.wrapper > h1 {
+    margin: 50px auto;
+    font-size: 3.5em
+}
+
+.events {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.event {
+    padding: 10px;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.event-detail .event {
+    padding: 10px;
+}
+
+.event-detail .event h2 {
+    margin: 20px auto;
+    font-size: 2em
+}
+
+.event-detail .event p {
+    margin: 0px
+}
+
+.event-d {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid black;
+    position: relative;
+}
+
+.site-form {
+    margin-top: 60px;
+    border: 1px solid black;
+    padding: 20px;
+    background-color: beige;
+}
+
+
+
+
+

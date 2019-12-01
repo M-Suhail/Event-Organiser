@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> Event Details</h1>
+    <div class="event-detail" class="container">
+        <div class="event-d">
+            <h2 class="entry-title">{{ event.title }}</h2>
+            <p><strong>Posted By:</strong> {{ event.posted_by }}</p>
+            <p><strong>Type:</strong> {{ event.category }}</p>
+            <p><strong>Event Details:</strong> {{ event.details }}</p>
+            <p><strong>Venue:</strong> {{ event.venue }}</p>
+            <p><strong>Date & Time:</strong> On {{ event.date }} at {{ event.time }}</p>
+            {% if event.is_archive %}
+                <p class="event-archive"><strong>Event Status:</strong> This event has been archived!</p>
+            {% else %}
+                <p class="event-archive"><strong>Event Status:</strong> This is an active event!</p>
+            {% endif %}
+            <div class="btn-group" role="group">
+                <a href="{% url 'events:edit_event' event.id %}"
+                   class="btn btn-warning">Edit</a>
+                <a href="{% url 'events:archive_event' event.id %}" class="btn btn-secondary">Archive</a>
+                <button type="button" class="btn btn-danger" data-toggle="modal"
+                        data-target="#exampleModal">
+                    Delete
+                </button>
+            </div>
+            {% load social_share %}
+            {% post_to_facebook object_or_url "Post to Facebook!" %}
+            {% post_to_twitter "New Event: {{event.title}}. Check it out!" object_or_url "Post to Twitter" %}
+            {% send_email event.title "New Event: {{event.title}}. Check it out!" object_or_url "Share via email" %}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{ event.title }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the event?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                            </button>
+                            <a href="{% url 'events:delete_event' event.slug %}" class="btn btn-danger">OK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+
+

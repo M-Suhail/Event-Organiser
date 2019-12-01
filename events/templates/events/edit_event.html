@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <h1>Edit an event</h1>
+    <form class="site-form" action="{% url 'events:edit_event' event.id %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input class="btn btn-success" type="submit" value="Edit">
+    </form>
+{% endblock %}
