@@ -60,8 +60,8 @@ def archive_event(request, id):
 
 
 @login_required()
-def delete_event(request, slug):
-    event = Event.objects.get(slug=slug)
+def delete_event(request, id):
+    event = Event.objects.get(id=id)
     event.delete()
     return redirect('events:events_list')
 
